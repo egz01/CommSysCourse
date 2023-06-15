@@ -38,6 +38,7 @@ class ModemGUI:
         print(geometry_string)
         self.root.geometry(geometry_string)
         self.root.resizable(True, True)
+        #self.root.tk.call('tk', 'scaling', 1)
 
     def create_widgets(self) -> None:
         self.create_tx_frame()
@@ -109,7 +110,8 @@ class ModemGUI:
             axs[1].set_title('Axis [1]')
             
             # get size from window
-            dpi = self.root.winfo_fpixels('1i')
+            dpi = 132
+            fig.set_dpi(72)
             fig.set_size_inches(w=round(self.gui_display_size.width*0.6)/dpi, h=round(self.gui_display_size.height*0.38)/dpi)
 
             self.channel_response_canvas = FigureCanvasTkAgg(figure=fig, master=self.channel_response_frame)
